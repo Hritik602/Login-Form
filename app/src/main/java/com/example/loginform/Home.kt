@@ -40,19 +40,13 @@ class Home : AppCompatActivity() {
         clickedButton.setOnClickListener{
             println("Clicked")
             notificationFunction()
-
-
-
-
         }
-
-
     }
 
     private fun createNotificationChannel(){
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             val name="hello"
-            val descriptionText="Hritik How Are You"
+            val descriptionText="Hritik"
             val importance=NotificationManager.IMPORTANCE_HIGH
             val channel:NotificationChannel= NotificationChannel(notificationChannelId,name,importance).apply {
                 description=descriptionText
@@ -71,9 +65,10 @@ class Home : AppCompatActivity() {
          var pendingIntent:PendingIntent= PendingIntent.getActivity(this,0,intent,0)
 
         val builder:NotificationCompat.Builder=NotificationCompat.Builder(this,notificationChannelId)
-            .setSmallIcon(R.drawable.ic_launcher_background)
+            .setSmallIcon(R.drawable.ic_launcher_foreground)
             .setContentTitle("Hello")
-            .setContentText("Hritik")
+            .setContentText("Hritik How Are You")
+            .setAutoCancel(true)
             .setPriority(NotificationCompat.PRIORITY_HIGH)
         with(NotificationManagerCompat.from(this)){
                 notify(101,builder.build())
