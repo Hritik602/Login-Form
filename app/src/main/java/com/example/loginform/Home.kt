@@ -17,7 +17,7 @@ import android.support.v4.app.NotificationManagerCompat
 import android.widget.Button
 
 
-class Home : AppCompatActivity() {
+class HomeActivity : AppCompatActivity() {
 
     lateinit  var notificationChannel : NotificationChannel
     private val notificationChannelId ="notification id"
@@ -33,7 +33,7 @@ class Home : AppCompatActivity() {
 
         // Showing button
         val clickedButton=findViewById<Button>(R.id.button2)
-
+            // Calling Notification Channel Function
         createNotificationChannel()
 
         //Button Function
@@ -53,19 +53,19 @@ class Home : AppCompatActivity() {
             }
             val notificationManager:NotificationManager= getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
             notificationManager.createNotificationChannel(channel)
-
         }
-
     }
     private fun notificationFunction(){
 
-        val intent= Intent(this, Home::class.java).apply {
+        val intent= Intent(this, HomeActivity::class.java).apply {
             flags=Intent.FLAG_ACTIVITY_NEW_TASK
         }
          var pendingIntent:PendingIntent= PendingIntent.getActivity(this,0,intent,0)
 
         val builder:NotificationCompat.Builder=NotificationCompat.Builder(this,notificationChannelId)
-            .setSmallIcon(R.drawable.ic_launcher_foreground)
+            .setSmallIcon(R.drawable.ic_baseline_notifications_active_24)
+            .setLargeIcon(BitmapFactory.decodeResource(this
+                .resources,R.drawable.ic_launcher_background))
             .setContentTitle("Hello")
             .setContentText("Hritik How Are You")
             .setAutoCancel(true)
